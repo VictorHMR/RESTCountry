@@ -1,0 +1,39 @@
+table{
+    border-collapse: collapse;
+}
+
+td {
+    vertical-align: center;
+    padding: 10px 0;
+
+}
+th{
+    padding: 10px 0;
+    font-size: 20px;
+    text-align: left;
+}
+.country-list {
+    padding: 10px;
+    border: 3px solid grey;
+    margin-right: 30px;
+    width: 40vw;
+    height: 80vh;
+    overflow-y: scroll;
+    background-color: seashell;
+}
+
+#tabFavorites tr> :nth-child(1), #tabFavorites tr> :nth-child(2), #tabCountries tr> :nth-child(1), #tabCountries tr> :nth-child(2) {
+    width: 7%;
+}
+
+#tabFavorites tr> :nth-child(3), #tabCountries tr> :nth-child(3) {
+    width: 70%;
+}
+
+#tabFavorites tr> :nth-child(4), #tabCountries tr> :nth-child(4) {
+    width: 10%;
+    text-align: right;
+    padding-right: 10px;
+}
+
+
