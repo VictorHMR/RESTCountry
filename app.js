@@ -11,7 +11,6 @@ var SearchF = document.querySelector('#pesquisarF')
 var SLinguas = document.querySelector('#Linguas')
 
 /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-
 /*--------------------------------------------------------------------------Declaração de Variaveis---------------------------------------------------------------------------*/
 
 var populationGlob = 0;
@@ -29,7 +28,7 @@ fetch(url)
     })
     .then((result) => {
         for (var i = 0; i < result.length; i++) {
-            country.push({
+            country.push({  //Adicionando apenas as informações que serão usadas no programa a array
                 name: [result[i].name, result[i].translations.br, result[i].translations.es, result[i].translations.ja],
                 nativeName: result[i].nativeName,
                 region: result[i].region,
@@ -43,7 +42,7 @@ fetch(url)
 
 console.log(country);
 
-function renderizar(filter, type) { // Recebe como parametro um valor para o filtro e um tipo de filtro
+function renderizar(filter, type) { //Função de renderização, recebe como parametro um valor para o filtro e um tipo de filtro
     populationGlob = 0;
     contP = 0;
     filtred = '';
@@ -111,7 +110,7 @@ function renderizar(filter, type) { // Recebe como parametro um valor para o fil
     popuTot.innerHTML = Intl.NumberFormat('pt-BR').format(populationGlob);
     totalP.innerHTML = contP;
 }
-function renderizarF(filterF, type) {
+function renderizarF(filterF, type) { //Função de renderização de Favoritos de acordo com filtro e tipo de filtro
     populationGlob = 0;
     contP = 0;
     var paises = `
@@ -175,7 +174,7 @@ function renderizarF(filterF, type) {
     totalPF.innerHTML = contP;
     popuTotF.innerHTML = Intl.NumberFormat('pt-BR').format(populationGlob);
 }
-function favoritar(indice) {
+function favoritar(indice) { //Função usada para adicionar um objeto de pais ao array de favoritos
     Search.value = '';
     favoritos[indice] = country[indice];
     country[indice] = '';
@@ -187,7 +186,7 @@ function favoritar(indice) {
     }
     renderizarF();
 }
-function removeFav(indice) {
+function removeFav(indice) { //Função usada para Remover um objeto de pais ao array de paises
     Search.value = '';
     country[indice] = favoritos[indice];
     favoritos[indice] = '';
@@ -200,15 +199,14 @@ function removeFav(indice) {
     renderizarF();
 
 }
-
-Search.addEventListener('input', () => {
+Search.addEventListener('input', () => { //Adiciona evento de digitação
     renderizar(Search.value, 'Letter')
 })
-SearchF.addEventListener('input', () => {
+SearchF.addEventListener('input', () => {//Adiciona evento de digitação na barra de Favoritos
     renderizarF(SearchF.value, 'Letter')
 })
 
-SLinguas.addEventListener('change', () => {
+SLinguas.addEventListener('change', () => { //Adiciona evento de seleção de lingua
     lingua = parseInt(SLinguas.options[SLinguas.selectedIndex].value);
     renderizar();
     if(favoritos != ''){
